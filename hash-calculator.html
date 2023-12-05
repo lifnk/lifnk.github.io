@@ -1,37 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hash Calculator</title>
-</head>
-<body>
-  <input type="text" id="inputString" placeholder="Enter a string">
-  <input type="number" id="hashLength" placeholder="Hash length">
-  <button onclick="calculateHash()">Calculate Hash</button>
-  <div id="result"></div>
-
-  <script>
-    function calculateHash() {
-      const inputString = document.getElementById('inputString').value;
-      const hashLength = document.getElementById('hashLength').value;
-      
-      const hashValue = hashCode(inputString);
-      const truncatedHash = hashValue.substring(0, hashLength);
-
-      document.getElementById('result').innerText = `Hash value: ${truncatedHash}`;
-    }
-
-    function hashCode(str) {
-      var hash = 0;
-      if (str.length == 0) return hash;
-      for (var i = 0; i < str.length; i++) {
-        var char = str.charCodeAt(i);
-        hash = ((hash << 5) - hash) + char;
-        hash &= hash; // Convert to 32bit integer
-      }
-      return hash.toString();
-    }
-  </script>
-</body>
+<!DOCTYPE html>  
+<html lang="zh">  
+<head>  
+  <meta charset="UTF-8">  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  <title>字符哈希值计算器</title>  
+  <link rel="stylesheet" href="style.css">  
+</head>  
+<body>  
+  <h1>字符哈希值计算器</h1>  
+  <label for="inputText">输入文本：</label>  
+  <input type="text" id="inputText" placeholder="请输入文本">  
+  <label for="bitSize">哈希值位数：</label>  
+  <select id="bitSize">  
+    <option value="128">128 位</option>  
+    <option value="160">160 位</option>  
+    <option value="192">192 位</option>  
+    <option value="224">224 位</option>  
+    <option value="256">256 位</option>  
+  </select>  
+  <button onclick="calculateHash()">计算哈希值</button>  
+  <p id="output"></p>  
+  <script src="script.js"></script>  
+</body>  
 </html>
